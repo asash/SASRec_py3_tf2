@@ -45,9 +45,9 @@ def evaluate(model, dataset, args, sess):
     valid_user = 0.0
 
     if usernum>10000:
-        users = random.sample(xrange(1, usernum + 1), 10000)
+        users = random.sample(range(1, usernum + 1), 10000)
     else:
-        users = xrange(1, usernum + 1)
+        users = range(1, usernum + 1)
     for u in users:
 
         if len(train[u]) < 1 or len(test[u]) < 1: continue
@@ -79,7 +79,7 @@ def evaluate(model, dataset, args, sess):
             NDCG += 1 / np.log2(rank + 2)
             HT += 1
         if valid_user % 100 == 0:
-            print '.',
+            sys.stdout.write ('.')
             sys.stdout.flush()
 
     return NDCG / valid_user, HT / valid_user
@@ -92,9 +92,9 @@ def evaluate_valid(model, dataset, args, sess):
     valid_user = 0.0
     HT = 0.0
     if usernum>10000:
-        users = random.sample(xrange(1, usernum + 1), 10000)
+        users = random.sample(range(1, usernum + 1), 10000)
     else:
-        users = xrange(1, usernum + 1)
+        users = range(1, usernum + 1)
     for u in users:
         if len(train[u]) < 1 or len(valid[u]) < 1: continue
 
@@ -124,7 +124,7 @@ def evaluate_valid(model, dataset, args, sess):
             NDCG += 1 / np.log2(rank + 2)
             HT += 1
         if valid_user % 100 == 0:
-            print '.',
+            sys.stdout.write('.')
             sys.stdout.flush()
 
     return NDCG / valid_user, HT / valid_user

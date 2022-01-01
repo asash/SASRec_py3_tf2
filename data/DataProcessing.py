@@ -57,7 +57,7 @@ for l in parse('reviews_' + dataset_name + '.json.gz'):
 for userid in User.keys():
     User[userid].sort(key=lambda x: x[0])
 
-print usernum, itemnum
+print(usernum, itemnum)
 
 f = open('Beauty.txt', 'w')
 for user in User.keys():
